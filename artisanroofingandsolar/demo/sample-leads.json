@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Mike Rodriguez",
+    "business": "Rodriguez Roofing LLC",
+    "service": "Emergency roof repair",
+    "message": "We had storm damage last night and need someone out ASAP. Multiple units affected. Can you give us a quote today? Call me at 214-555-0188.",
+    "phone": "214-555-0188",
+    "email": "mike@rodriguezroofing.com"
+  },
+  {
+    "name": "Sarah Chen",
+    "business": "DFW Comfort Air",
+    "service": "AI lead response system",
+    "message": "Hi, I saw your site and I'm interested in learning more about the AI response system. We get about 30 leads a week and miss probably half of them. Would love to chat when you get a chance.",
+    "phone": "",
+    "email": "sarah@dfwcomfortair.com"
+  },
+  {
+    "name": "James",
+    "business": "",
+    "service": "General info",
+    "message": "hey do you guys do websites too? just looking around",
+    "phone": "",
+    "email": "james99@gmail.com"
+  },
+  {
+    "name": "Marketing Team",
+    "business": "LeadBoost Pro",
+    "service": "Partnership",
+    "message": "Hi there! We noticed your company and think our platform could help you scale. We offer white-label lead gen tools with a free trial. Let's schedule a demo of OUR platform!",
+    "phone": "",
+    "email": "outreach@leadboostpro.io"
+  },
+  {
+    "name": "Tom Bradley",
+    "business": "Bradley Plumbing & HVAC",
+    "service": "Full automation setup",
+    "message": "We need help bad. I'm losing 2-3 jobs a week because I can't answer the phone fast enough. I want the full system — lead response, booking, follow-up, everything. What's the pricing and how fast can you get us set up? My cell is 817-555-0234.",
+    "phone": "817-555-0234",
+    "email": "tom@bradleyplumbing.com"
+  }
+]

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tyche Demo — ROR Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <nav class="demo-nav">
+    <div class="container nav-inner">
+      <a href="/" class="logo">ROR<span>Enterprises</span></a>
+      <div class="nav-right">
+        <span class="demo-badge">SIMULATION</span>
+        <a href="/" class="btn btn-sm btn-outline">Back to Site</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="demo-main">
+    <div class="container">
+      <header class="demo-header">
+        <p class="tag">Interactive Demo</p>
+        <h1>See Tyche in Action</h1>
+        <p class="subtitle">Submit a lead below and watch Tyche classify, respond, and route it in real time. This is a simulation — no real messages are sent.</p>
+      </header>
+
+      <div class="demo-layout">
+        <!-- LEFT: Input -->
+        <div class="demo-input-panel">
+          <div class="panel-header">
+            <h2>Inbound Lead</h2>
+            <div class="sample-selector">
+              <label for="sampleSelect">Load sample:</label>
+              <select id="sampleSelect">
+                <option value="">— Custom —</option>
+              </select>
+            </div>
+          </div>
+          <form id="leadForm" autocomplete="off">
+            <div class="field">
+              <label for="leadName">Name</label>
+              <input type="text" id="leadName" placeholder="John Smith" required>
+            </div>
+            <div class="field">
+              <label for="leadBusiness">Business</label>
+              <input type="text" id="leadBusiness" placeholder="Smith HVAC LLC">
+            </div>
+            <div class="field">
+              <label for="leadService">Service Requested</label>
+              <input type="text" id="leadService" placeholder="AC repair, lead response system, etc.">
+            </div>
+            <div class="field">
+              <label for="leadMessage">Message</label>
+              <textarea id="leadMessage" rows="4" placeholder="Describe the inquiry..." required></textarea>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="leadPhone">Phone</label>
+                <input type="tel" id="leadPhone" placeholder="555-0100">
+              </div>
+              <div class="field">
+                <label for="leadEmail">Email</label>
+                <input type="email" id="leadEmail" placeholder="john@example.com">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-full" id="submitBtn">
+              Submit Lead to Tyche
+            </button>
+          </form>
+        </div>
+
+        <!-- RIGHT: Output -->
+        <div class="demo-output-panel" id="outputPanel">
+          <div class="output-empty" id="outputEmpty">
+            <div class="empty-orb">
+              <div class="orb-pulse"></div>
+              <span>Tyche</span>
+            </div>
+            <p>Submit a lead to see Tyche process it</p>
+          </div>
+          <div class="output-timeline hidden" id="outputTimeline"></div>
+        </div>
+      </div>
+
+      <!-- Replay -->
+      <div class="demo-actions hidden" id="demoActions">
+        <button class="btn btn-outline" id="replayBtn">Replay Demo</button>
+        <a href="/#contact" class="btn btn-primary">Book a Real Demo</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="demo-footer">
+    <div class="container">
+      <p>This is a simulation. No real messages, calls, or emails are sent. <a href="/">Return to rorenterprises.net</a></p>
+    </div>
+  </footer>
+
+  <script src="demo.js"></script>
+</body>
+</html>

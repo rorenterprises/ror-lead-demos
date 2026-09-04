@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>DFW Professional Pest Control — AI Office Assistant Founder Offer</title>
+  <meta name="description" content="A private one-page founder offer for DFW Professional Pest Control.">
+  <link rel="stylesheet" href="pamphlet.css">
+</head>
+<body>
+  <article class="pamphlet">
+    <header class="pamphlet-header">
+      <strong>ROR Enterprises</strong>
+      <span>Private founder offer for DFW Professional Pest Control</span>
+    </header>
+
+    <main>
+      <section class="pamphlet-intro">
+        <span class="kicker">Get your workday back</span>
+        <h1>Let the assistant run the office.</h1>
+        <p>It answers calls, quotes customers, schedules jobs, follows up, and sends approved invoices—while you handle the actual pest-control work.</p>
+        <div class="promise-line"><span>Your number stays yours</span><span>Your prices and rules</span><span>Special jobs go to DFW Professional Pest Control</span></div>
+      </section>
+
+      <div class="pamphlet-grid">
+        <section class="handles-card">
+          <span class="section-label">What it handles</span>
+          <h2>Your office work, in one place.</h2>
+          <ul>
+            <li>Answer and qualify calls</li>
+            <li>Quote from your prices</li>
+            <li>Schedule or change jobs</li>
+            <li>Send reminders and follow-ups</li>
+            <li>Send invoices after approval</li>
+            <li>Send daily activity summaries</li>
+          </ul>
+          <div class="customizable-note"><strong>Fully customizable.</strong><span>Change the voice, greeting, tone, questions, prices, schedule rules, transfers, follow-ups, and approval steps. If you do not like the demo voice, choose another—or clone a voice you own or have permission to use.</span></div>
+          <div class="proof-row">
+            <a href="tel:+14692906098"><small>Live test</small><strong>Call the assistant</strong><span>469-290-6098 →</span></a>
+            <a href="invoice-demo.html"><small>Live test</small><strong>Approve an invoice</strong><span>Open the demo →</span></a>
+          </div>
+        </section>
+
+        <section class="offer-card" id="offer">
+          <span class="offer-label">Founder offer</span>
+          <h2>AI Office Assistant</h2>
+          <div class="price"><strong>$497</strong><span>setup + first 30 days</span></div>
+          <p>After the first 30 days: <b>$297 per month.</b></p>
+          <p class="included">Includes custom setup, 500 calling minutes, monitoring, and ongoing adjustments.</p>
+          <dl>
+            <div><dt>Launch</dt><dd>Within 48 hours after your rules are confirmed</dd></div>
+            <div><dt>Texting</dt><dd>400 texts activate after carrier approval</dd></div>
+          </dl>
+          <button class="primary-action choose" data-choice="agent" type="button">Choose the assistant — $497</button>
+        </section>
+      </div>
+
+      <section class="website-option">
+        <div class="website-heading">
+          <div><span class="section-label">Optional website</span><h2>Choose one website style.</h2><p>The founder add-on includes either version below.</p></div>
+          <div class="website-addon"><span>Founder add-on</span><strong>$297</strong><small>Regular price: <s>$997</s></small></div>
+        </div>
+
+        <div class="website-choices">
+          <article class="website-choice-card">
+            <a class="site-thumbnail" href="pricing.html" aria-label="Open the website with prices">
+              <iframe src="pricing.html" title="Thumbnail of website with prices" loading="lazy" tabindex="-1"></iframe>
+              <span>Open full site →</span>
+            </a>
+            <div class="website-choice-copy">
+              <span>Option 1</span><h3>Prices shown</h3>
+              <p>Customers see service prices before calling. It answers basic price questions faster, but some visitors may compare the number without hearing the value.</p>
+              <a href="pricing.html">View this option</a>
+            </div>
+          </article>
+
+          <article class="website-choice-card recommended">
+            <a class="site-thumbnail" href="quote-first.html" aria-label="Open the call-for-quote website">
+              <iframe src="quote-first.html" title="Thumbnail of website without public prices" loading="lazy" tabindex="-1"></iframe>
+              <span>Open full site →</span>
+            </a>
+            <div class="website-choice-copy">
+              <span>Option 2 · Best fit</span><h3>Call for quote</h3>
+              <p>No public prices. Each call-to-action sends the customer to the assistant, which asks the right questions and gives a quote from your rules.</p>
+              <a href="quote-first.html">View this option</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="bundle-choice">
+          <div><span>Assistant + either website</span><strong>$794 total today</strong></div>
+          <button class="secondary-action choose" data-choice="both" type="button">Choose assistant + website</button>
+        </div>
+      </section>
+
+      <p class="plain-terms">Calling, quoting, scheduling, transfers, summaries, and approved invoice delivery can launch first. Text reminders and text follow-ups begin after carrier approval. If the assistant is not handling the agreed work, cancel before the next payment.</p>
+      <p class="other-services"><b>Other ROR services:</b> website support and additional admin automation. Social media marketing is in the works.</p>
+
+      <section class="approval-box" id="approval" hidden>
+        <strong id="approval-title"></strong>
+        <p id="approval-message"></p>
+        <button id="copy-choice" type="button">Copy approval message</button>
+        <span id="copy-note" aria-live="polite"></span>
+      </section>
+    </main>
+
+    <footer><span>Prepared for DFW Professional Pest Control</span><span>ROR Enterprises</span></footer>
+  </article>
+
+  <script>
+    const choices={agent:{title:'AI office assistant selected',message:'Frank, I am ready to start the AI Office Assistant for $497, including setup and my first 30 days. I understand service continues at $297 per month after the first 30 days.'},both:{title:'AI office assistant and website selected',message:'Frank, I am ready to start the AI Office Assistant and founder website for $794 total, including setup and my first 30 days. I understand assistant service continues at $297 per month after the first 30 days.'}};
+    let selected='';
+    document.querySelectorAll('.choose').forEach(button=>button.addEventListener('click',()=>{const choice=choices[button.dataset.choice];selected=choice.message;document.getElementById('approval-title').textContent=choice.title;document.getElementById('approval-message').textContent=choice.message;const box=document.getElementById('approval');box.hidden=false;box.scrollIntoView({behavior:'smooth',block:'center'});}));
+    document.getElementById('copy-choice').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(selected);document.getElementById('copy-note').textContent='Copied. Paste it into your text to Frank.';}catch{document.getElementById('copy-note').textContent='Select the message above and send it to Frank.';}});
+  </script>
+</body>
+</html>

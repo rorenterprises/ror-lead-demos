@@ -43,3 +43,24 @@ footer{padding:19px 34px;display:flex;justify-content:space-between;gap:20px;bac
 @media print{@page{size:letter;margin:0}html,body{background:white}body{padding:0}.pamphlet{width:100%;margin:0;border-radius:0;box-shadow:none}main{padding:28px}.pamphlet-grid{margin-top:20px}.handles-card,.offer-card{padding:22px}.website-option{padding:19px 22px}.primary-action,.secondary-action{display:none}}
 
 @media (max-width:760px){.proof-row{grid-template-columns:1fr}}
+
+.money-plain{margin:18px 34px 0;padding:18px 20px;background:var(--paper);border:2px solid var(--green);border-radius:12px}
+.money-plain table{width:100%;border-collapse:collapse;margin:10px 0 8px;font-size:16px}
+.money-plain th{text-align:left;color:var(--rust);font-size:12px;text-transform:uppercase;letter-spacing:.1em;padding:0 8px 8px 0}
+.money-plain td{padding:10px 8px 10px 0;border-top:1px solid var(--line)}.money-plain td b{color:var(--green);font-size:19px}
+.money-plain p{margin:6px 0 0;color:var(--muted);font-size:14px}
+@media (max-width:760px){.money-plain{margin:16px 18px 0}.money-plain table{font-size:14px}}
+
+/* Got questions? Ask Rory — chat widget */
+.askrory-open{position:fixed;right:18px;bottom:18px;z-index:50;padding:14px 18px;border:0;border-radius:999px;background:var(--lime);color:var(--green);font:900 15px Inter,system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.35);cursor:pointer}
+.askrory{position:fixed;right:18px;bottom:18px;z-index:60;width:min(360px,calc(100% - 36px));background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.4);display:flex;flex-direction:column;overflow:hidden;font-family:Inter,system-ui,sans-serif}
+.askrory-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:var(--green);color:#fff}
+.askrory-head button{background:none;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:0 4px}
+.askrory-log{height:300px;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--cream)}
+.askrory-msg{max-width:88%;padding:9px 12px;border-radius:12px;font-size:14px;line-height:1.4;white-space:pre-wrap}
+.askrory-msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start}
+.askrory-msg.me{background:var(--green);color:#fff;align-self:flex-end}
+.askrory-form{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}
+.askrory-form input{flex:1;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:inherit}
+.askrory-form button{padding:10px 14px;border:0;border-radius:8px;background:var(--green);color:#fff;font-weight:900;cursor:pointer}
+.askrory-foot{padding:8px 12px 12px;font-size:12px;color:var(--muted)}.askrory-foot a{color:var(--green);font-weight:900}

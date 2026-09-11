@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>DFW Professional Pest Control — your personal assistant, live</title>
   <meta name="description" content="Private demo for DFW Professional Pest Control: call the assistant, approve an invoice, see both website options.">
-  <link rel="stylesheet" href="pamphlet.css?v=1789151294">
+  <link rel="stylesheet" href="pamphlet.css?v=1789161745">
   <style>
     .demo-wrap{padding:26px 34px 34px}
     .demo-wrap h1{font-size:40px;margin-top:8px}
@@ -95,5 +95,26 @@
   function fit(){document.querySelectorAll('.site-card .thumb').forEach(t=>{const f=t.querySelector('iframe');if(f)f.style.transform='scale('+(t.clientWidth/1280)+')';});}
   addEventListener('load',fit);addEventListener('resize',fit);fit();
 </script>
+  <!-- Got questions? — text chat with Rory (site-server /api/ask → Vapi Chat API) -->
+  <div id="askrory" class="askrory" hidden>
+    <div class="askrory-head"><strong>Got questions? Ask Rory.</strong><button type="button" id="askrory-close" aria-label="Close">×</button></div>
+    <div class="askrory-log" id="askrory-log"><div class="askrory-msg bot">Hi — I'm Rory, the assistant set up for DFW Professional Pest Control. Ask me anything about the offer, the price, or how it works.</div></div>
+    <form class="askrory-form" id="askrory-form"><input id="askrory-in" type="text" maxlength="600" placeholder="Type a question…" autocomplete="off"><button type="submit">Send</button></form>
+    <div class="askrory-foot">Rather talk? <a href="tel:+14692906098">Call 469-290-6098</a> and hear it live.</div>
+  </div>
+  <button type="button" id="askrory-open" class="askrory-open">Got questions? Ask Rory</button>
+  <script>
+  (function(){
+    const box=document.getElementById('askrory'), open=document.getElementById('askrory-open'), log=document.getElementById('askrory-log'), form=document.getElementById('askrory-form'), inp=document.getElementById('askrory-in');
+    let chatId=null; try{chatId=sessionStorage.getItem('askrory-chat')}catch(e){}
+    function add(t,who){const d=document.createElement('div');d.className='askrory-msg '+who;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight;return d;}
+    open.addEventListener('click',()=>{box.hidden=false;open.hidden=true;inp.focus();});
+    document.getElementById('askrory-close').addEventListener('click',()=>{box.hidden=true;open.hidden=false;});
+    form.addEventListener('submit',async e=>{e.preventDefault();const q=inp.value.trim();if(!q)return;inp.value='';add(q,'me');const w=add('…','bot');
+      try{const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q,chatId})});const j=await r.json();w.textContent=j.reply||'Sorry — try that again.';if(j.chatId){chatId=j.chatId;try{sessionStorage.setItem('askrory-chat',chatId)}catch(e){}}}
+      catch(err){w.textContent='I couldn’t reach the assistant just now — call 469-290-6098 and ask there.';}
+    });
+  })();
+  </script>
 </body>
 </html>

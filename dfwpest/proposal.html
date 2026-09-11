@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>DFW Professional Pest Control — Personal Assistant Founder Offer</title>
   <meta name="description" content="A private one-page founder offer for DFW Professional Pest Control.">
-  <link rel="stylesheet" href="pamphlet.css?v=1789151294">
+  <link rel="stylesheet" href="pamphlet.css?v=1789161745">
 </head>
 <body>
   <article class="pamphlet">
@@ -46,12 +46,14 @@
         <section class="offer-card" id="offer">
           <span class="offer-label">Founder offer</span>
           <h2>Personal Assistant</h2>
-          <div class="price"><strong>$497</strong><span>setup + first 30 days</span></div>
-          <p>After the first 30 days: <b>$297 per month.</b></p>
-          <p class="included">Includes custom setup, 500 calling minutes, monitoring, and ongoing adjustments.</p>
+          <div class="price"><strong>$497</strong><span>one time — setup + your first 30 days</span></div>
+          <p>Then <b>$297 a month</b>, starting on day 31. Nothing else.</p>
+          <p class="included">The monthly covers the line, 500 calling minutes, 1,000 texts, monitoring, price-sheet updates and tuning — and hosting for your website if you take one.</p>
           <dl>
             <div><dt>Launch</dt><dd>Within 48 hours after your rules are confirmed</dd></div>
             <div><dt>Texting</dt><dd>1,000 texts a month, active after carrier approval</dd></div>
+            <div><dt>No meter</dt><dd>No per-minute or per-text charges, ever. Outgrow the plan and we move you up together.</dd></div>
+            <div><dt>No contract</dt><dd>Month to month. Cancel before the next payment.</dd></div>
           </dl>
           <button class="primary-action choose" data-choice="agent" type="button">Choose the assistant — $497</button>
         </section>
@@ -60,7 +62,7 @@
       <section class="website-option">
         <div class="website-heading">
           <div><span class="section-label">Optional website</span><h2>Choose one website style.</h2><p>The founder add-on includes either version below.</p></div>
-          <div class="website-addon"><span>Founder add-on</span><strong>$297</strong><small>Regular price: <s>$997</s></small></div>
+          <div class="website-addon"><span>Founder add-on — one time</span><strong>$297</strong><small>Regular price: <s>$997</s> · no monthly fee for the site</small></div>
         </div>
 
         <div class="website-choices">
@@ -90,11 +92,20 @@
         </div>
 
         <div class="bundle-choice">
-          <div><span>Assistant + either website</span><strong>$794 total today</strong></div>
+          <div><span>Assistant + either website</span><strong>$794 total today</strong><small style="display:block;color:var(--muted);margin-top:4px">then $297 a month from day 31 — the website adds nothing monthly</small></div>
           <button class="secondary-action choose" data-choice="both" type="button">Choose assistant + website</button>
         </div>
       </section>
 
+      <section class="money-plain" aria-label="What you pay, plainly">
+        <span class="section-label">What you pay, plainly</span>
+        <table>
+          <tr><th></th><th>Today</th><th>Day 31 onward</th></tr>
+          <tr><td>Assistant only</td><td><b>$497</b> once</td><td><b>$297</b> / month</td></tr>
+          <tr><td>Assistant + website</td><td><b>$794</b> once</td><td><b>$297</b> / month (website has no monthly)</td></tr>
+        </table>
+        <p>That is the whole price list. No per-minute charges, no per-text charges, no setup fees later, no contract.</p>
+      </section>
       <p class="plain-terms"><strong>Your number is yours.</strong> Keep your current number and forward it, or take a new business line — either way it belongs to your business. Leave any time and take the number with you; the receiving carrier's transfer fees are yours.</p>
       <p class="plain-terms">Calling, quoting, scheduling, transfers, summaries, and approved invoice delivery can launch first. Text reminders and text follow-ups begin after carrier approval. If the assistant is not handling the agreed work, cancel before the next payment.</p>
       <p class="other-services"><b>Other ROR services:</b> website support and additional admin automation. Social media marketing is in the works.</p>
@@ -115,6 +126,27 @@
     let selected='';
     document.querySelectorAll('.choose').forEach(button=>button.addEventListener('click',()=>{const choice=choices[button.dataset.choice];selected=choice.message;document.getElementById('approval-title').textContent=choice.title;document.getElementById('approval-message').textContent=choice.message;const box=document.getElementById('approval');box.hidden=false;box.scrollIntoView({behavior:'smooth',block:'center'});}));
     document.getElementById('copy-choice').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(selected);document.getElementById('copy-note').textContent='Copied. Paste it into your text to Frank.';}catch{document.getElementById('copy-note').textContent='Select the message above and send it to Frank.';}});
+  </script>
+  <!-- Got questions? — text chat with Rory (site-server /api/ask → Vapi Chat API) -->
+  <div id="askrory" class="askrory" hidden>
+    <div class="askrory-head"><strong>Got questions? Ask Rory.</strong><button type="button" id="askrory-close" aria-label="Close">×</button></div>
+    <div class="askrory-log" id="askrory-log"><div class="askrory-msg bot">Hi — I'm Rory, the assistant set up for DFW Professional Pest Control. Ask me anything about the offer, the price, or how it works.</div></div>
+    <form class="askrory-form" id="askrory-form"><input id="askrory-in" type="text" maxlength="600" placeholder="Type a question…" autocomplete="off"><button type="submit">Send</button></form>
+    <div class="askrory-foot">Rather talk? <a href="tel:+14692906098">Call 469-290-6098</a> and hear it live.</div>
+  </div>
+  <button type="button" id="askrory-open" class="askrory-open">Got questions? Ask Rory</button>
+  <script>
+  (function(){
+    const box=document.getElementById('askrory'), open=document.getElementById('askrory-open'), log=document.getElementById('askrory-log'), form=document.getElementById('askrory-form'), inp=document.getElementById('askrory-in');
+    let chatId=null; try{chatId=sessionStorage.getItem('askrory-chat')}catch(e){}
+    function add(t,who){const d=document.createElement('div');d.className='askrory-msg '+who;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight;return d;}
+    open.addEventListener('click',()=>{box.hidden=false;open.hidden=true;inp.focus();});
+    document.getElementById('askrory-close').addEventListener('click',()=>{box.hidden=true;open.hidden=false;});
+    form.addEventListener('submit',async e=>{e.preventDefault();const q=inp.value.trim();if(!q)return;inp.value='';add(q,'me');const w=add('…','bot');
+      try{const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q,chatId})});const j=await r.json();w.textContent=j.reply||'Sorry — try that again.';if(j.chatId){chatId=j.chatId;try{sessionStorage.setItem('askrory-chat',chatId)}catch(e){}}}
+      catch(err){w.textContent='I couldn’t reach the assistant just now — call 469-290-6098 and ask there.';}
+    });
+  })();
   </script>
 </body>
 </html>

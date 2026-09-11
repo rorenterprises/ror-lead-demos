@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <title>DFW Professional Pest Control — AI Office Assistant Founder Offer</title>
+  <title>DFW Professional Pest Control — Personal Assistant Founder Offer</title>
   <meta name="description" content="A private one-page founder offer for DFW Professional Pest Control.">
   <link rel="stylesheet" href="pamphlet.css?v=1789138384">
 </head>
@@ -18,7 +18,7 @@
     <main>
       <section class="pamphlet-intro">
         <span class="kicker">Get your workday back</span>
-        <h1>Let the assistant run the office.</h1>
+        <h1>Your own personal assistant, on every call.</h1>
         <p>It answers calls, quotes customers, schedules jobs, follows up, and sends approved invoices—while you handle the actual pest-control work.</p>
         <div class="promise-line"><span>Your number stays yours</span><span>Your prices and rules</span><span>Special jobs go to DFW Professional Pest Control</span></div>
       </section>
@@ -44,7 +44,7 @@
 
         <section class="offer-card" id="offer">
           <span class="offer-label">Founder offer</span>
-          <h2>AI Office Assistant</h2>
+          <h2>Personal Assistant</h2>
           <div class="price"><strong>$497</strong><span>setup + first 30 days</span></div>
           <p>After the first 30 days: <b>$297 per month.</b></p>
           <p class="included">Includes custom setup, 500 calling minutes, monitoring, and ongoing adjustments.</p>
@@ -109,7 +109,7 @@
   </article>
 
   <script>
-    const choices={agent:{title:'AI office assistant selected',message:'Frank, I am ready to start the AI Office Assistant for $497, including setup and my first 30 days. I understand service continues at $297 per month after the first 30 days.'},both:{title:'AI office assistant and website selected',message:'Frank, I am ready to start the AI Office Assistant and founder website for $794 total, including setup and my first 30 days. I understand assistant service continues at $297 per month after the first 30 days.'}};
+    const choices={agent:{title:'Personal assistant selected',message:'Frank, I am ready to start the Personal Assistant for $497, including setup and my first 30 days. I understand service continues at $297 per month after the first 30 days.'},both:{title:'Personal assistant and website selected',message:'Frank, I am ready to start the Personal Assistant and founder website for $794 total, including setup and my first 30 days. I understand assistant service continues at $297 per month after the first 30 days.'}};
     let selected='';
     document.querySelectorAll('.choose').forEach(button=>button.addEventListener('click',()=>{const choice=choices[button.dataset.choice];selected=choice.message;document.getElementById('approval-title').textContent=choice.title;document.getElementById('approval-message').textContent=choice.message;const box=document.getElementById('approval');box.hidden=false;box.scrollIntoView({behavior:'smooth',block:'center'});}));
     document.getElementById('copy-choice').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(selected);document.getElementById('copy-note').textContent='Copied. Paste it into your text to Frank.';}catch{document.getElementById('copy-note').textContent='Select the message above and send it to Frank.';}});

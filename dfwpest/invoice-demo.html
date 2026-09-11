@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Approve an invoice — DFW Professional Pest Control demo</title>
+  <meta name="description" content="Live demonstration: the assistant drafts the invoice from a finished job; nothing is sent until the owner approves it.">
+  <link rel="stylesheet" href="pamphlet.css?v=1789138384">
+  <style>
+    .demo-wrap{padding:26px 34px 34px}
+    .demo-wrap h1{font-size:34px;margin-top:8px}
+    .demo-wrap>p.lede{max-width:760px;margin:12px 0 22px;color:var(--muted);font-size:17px}
+    .demo-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:18px;align-items:start}
+    .job-card,.invoice-card,.status-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+    .job-card dl{margin:12px 0 0;display:grid;grid-template-columns:110px 1fr;gap:6px 12px;font-size:14px}
+    .job-card dt{color:var(--muted);font-weight:850}.job-card dd{margin:0;font-weight:750}
+    .invoice-card table{width:100%;border-collapse:collapse;margin:12px 0 4px;font-size:15px}
+    .invoice-card th{text-align:left;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.1em;padding:0 0 8px}
+    .invoice-card td{padding:9px 0;border-top:1px solid var(--line);vertical-align:middle}
+    .invoice-card td.amt{text-align:right;white-space:nowrap;font-weight:850}
+    .invoice-card tr.total td{border-top:2px solid var(--green);font-weight:950;font-size:18px}
+    .invoice-card input[type=number]{width:74px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;font:inherit;text-align:right}
+    .invoice-card label.line{display:flex;align-items:center;gap:8px;font-weight:750}
+    .invoice-card .note{color:var(--muted);font-size:13px;margin:8px 0 0}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .actions .primary-action,.actions .secondary-action{width:auto;min-width:200px}
+    .secondary-action{background:var(--paper);color:var(--green);border:1px solid var(--green)!important}
+    .status-card{border-left:5px solid var(--rust)}
+    .status-card.sent{border-left-color:var(--green)}
+    .status-card ol{margin:10px 0 0;padding-left:18px;font-size:14px}
+    .status-card li{margin:6px 0;color:var(--muted)}
+    .status-card li.done{color:var(--ink);font-weight:750}
+    .status-card li.done::marker{color:var(--green)}
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+    .badge.draft{background:#fbe9e2;color:var(--rust)}.badge.sent{background:#e2f2e6;color:var(--green)}
+    .preview{margin-top:14px;padding:14px 16px;background:#f0f4e4;border-left:4px solid var(--lime);font-size:14px;white-space:pre-line}
+    .rule{margin-top:18px;padding:13px 14px;border-left:4px solid var(--green);background:var(--paper);font-size:14px}
+    .back{display:inline-block;margin-top:22px;color:var(--green);font-weight:900}
+    @media (max-width:760px){.demo-wrap{padding:20px 18px 26px}.demo-grid{grid-template-columns:1fr}.demo-wrap h1{font-size:28px}}
+  </style>
+</head>
+<body>
+  <article class="pamphlet">
+    <header class="pamphlet-header">
+      <strong>ROR Enterprises</strong>
+      <span>Live demo · invoices send only after you approve</span>
+    </header>
+
+    <main class="demo-wrap">
+      <span class="kicker">Live test</span>
+      <h1>Approve an invoice.</h1>
+      <p class="lede">A job just finished. The assistant has already written the invoice from your price sheet and the booking. Change anything you like, then approve it. <strong>Nothing leaves until you press approve.</strong></p>
+
+      <div class="demo-grid">
+        <section class="invoice-card" aria-labelledby="inv-h">
+          <span class="section-label">Draft invoice <span class="badge draft" id="badge">Draft — not sent</span></span>
+          <h2 id="inv-h" style="font-size:24px;margin-top:6px">Invoice #128</h2>
+          <table id="lines">
+            <thead><tr><th>Service</th><th style="text-align:right">Amount</th></tr></thead>
+            <tbody>
+              <tr data-price="125"><td><label class="line"><input type="checkbox" checked data-line> Exterior spray · 2,456 sq ft</label></td><td class="amt">$125</td></tr>
+              <tr data-price="60"><td><label class="line"><input type="checkbox" checked data-line> Interior treatment</label></td><td class="amt">$60</td></tr>
+              <tr data-price="50"><td><label class="line"><input type="checkbox" checked data-line> De-webbing service</label></td><td class="amt">$50</td></tr>
+              <tr data-price="125"><td><label class="line"><input type="checkbox" data-line> Whole-lawn treatment (offered on the call)</label></td><td class="amt">$125</td></tr>
+              <tr data-discount="10"><td><label class="line"><input type="checkbox" data-line> Military discount 10%</label></td><td class="amt" id="disc-amt">−$0</td></tr>
+              <tr class="total"><td>Total</td><td class="amt" id="total">$235</td></tr>
+            </tbody>
+          </table>
+          <p class="note">Prices come from your own price sheet — the same numbers on quote #127. The assistant never invents a price.</p>
+
+          <div class="actions">
+            <button class="primary-action" id="approve" type="button">Approve &amp; send invoice</button>
+            <button class="secondary-action" id="hold" type="button">Hold — I'll look later</button>
+          </div>
+          <div class="preview" id="preview" hidden></div>
+        </section>
+
+        <aside>
+          <section class="job-card">
+            <span class="section-label">Finished job</span>
+            <dl>
+              <dt>Customer</dt><dd>Sample customer</dd>
+              <dt>Address</dt><dd>2,456 sq ft home, Dallas</dd>
+              <dt>Booked by</dt><dd>The assistant, from a call on Tuesday</dd>
+              <dt>Completed</dt><dd>Today, 2:40 pm — marked done from your phone</dd>
+              <dt>Send by</dt><dd>Email now · text when carrier approval clears</dd>
+            </dl>
+          </section>
+
+          <section class="status-card" id="status" style="margin-top:14px">
+            <span class="section-label">What happens</span>
+            <ol id="steps">
+              <li class="done">Job marked complete</li>
+              <li class="done">Assistant drafts the invoice from your price sheet</li>
+              <li id="s3">You approve it (or change it first)</li>
+              <li id="s4">Invoice emailed to the customer with a payment link</li>
+              <li id="s5">Reminder in 3 days if unpaid; you get a daily summary</li>
+            </ol>
+          </section>
+
+          <div class="rule"><strong>The rule:</strong> an invoice goes out only after you approve it. Held invoices wait in your list — they never send on their own.</div>
+        </aside>
+      </div>
+
+      <a class="back" href="proposal.html">← Back to the founder offer</a>
+    </main>
+
+    <footer><span>Prepared for DFW Professional Pest Control · demo data only</span><span>ROR Enterprises</span></footer>
+  </article>
+
+  <script>
+    const money=n=>'$'+n.toLocaleString('en-US');
+    function recalc(){
+      let sub=0;
+      document.querySelectorAll('tr[data-price]').forEach(tr=>{ if(tr.querySelector('input').checked) sub+=Number(tr.dataset.price); });
+      const discRow=document.querySelector('tr[data-discount]');
+      const disc=discRow.querySelector('input').checked ? Math.round(sub*Number(discRow.dataset.discount)/100) : 0;
+      document.getElementById('disc-amt').textContent='−'+money(disc);
+      document.getElementById('total').textContent=money(sub-disc);
+      return sub-disc;
+    }
+    document.querySelectorAll('[data-line]').forEach(cb=>cb.addEventListener('change',()=>{ if(!sent) recalc(); }));
+    let sent=false;
+    document.getElementById('approve').addEventListener('click',()=>{
+      if(sent) return;
+      const total=recalc(); sent=true;
+      document.querySelectorAll('[data-line]').forEach(cb=>cb.disabled=true);
+      document.getElementById('badge').textContent='Approved — sent';
+      document.getElementById('badge').className='badge sent';
+      document.getElementById('approve').textContent='Sent ✓';
+      document.getElementById('hold').hidden=true;
+      ['s3','s4'].forEach(id=>document.getElementById(id).classList.add('done'));
+      document.getElementById('status').classList.add('sent');
+      const p=document.getElementById('preview'); p.hidden=false;
+      p.textContent='Emailed to the customer just now:\n"Hi — here is your invoice #128 from DFW Professional Pest Control for '+money(total)+'. Pay online with the link below, or call or text 469-216-1032 with any questions. Standard spray treatments carry a 30-day guarantee."';
+    });
+    document.getElementById('hold').addEventListener('click',()=>{
+      const p=document.getElementById('preview'); p.hidden=false;
+      p.textContent='Held. Invoice #128 stays in your "waiting for approval" list. Nothing was sent, and nothing will send until you approve it.';
+    });
+    recalc();
+  </script>
+</body>
+</html>

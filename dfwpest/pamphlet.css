@@ -64,3 +64,5 @@ footer{padding:19px 34px;display:flex;justify-content:space-between;gap:20px;bac
 .askrory-form input{flex:1;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:inherit}
 .askrory-form button{padding:10px 14px;border:0;border-radius:8px;background:var(--green);color:#fff;font-weight:900;cursor:pointer}
 .askrory-foot{padding:8px 12px 12px;font-size:12px;color:var(--muted)}.askrory-foot a{color:var(--green);font-weight:900}
+
+.askrory[hidden],.askrory-open[hidden]{display:none!important}
